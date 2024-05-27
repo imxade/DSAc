@@ -1,9 +1,15 @@
 #include <stdio.h>
 
-void swap(int* a , int* b) {
+void swapOld(int* a , int* b) {
     int temp = *a;
     *a = *b;
     *b = temp;
+}
+
+void swap(int arr[], int a, int b) {
+    int tmp = arr[a];
+    arr[a] = arr[b];
+    arr[b] = tmp;
 }
 
 void printArr(int arr[], int n) {
@@ -18,11 +24,13 @@ int partition(int arr[], int l, int r) {
     int i = l;
     for (int j = l; j < r; j++) {
         if (arr[j] < p) {
-            swap(&arr[i], &arr[j]);
+            // swapOld(&arr[i], &arr[j]);
+            swap(arr, i, j);
             i++;
         }
     }
-    swap(&arr[i], &arr[r]);
+    // swapOld(&arr[i], &arr[r]);
+    swap(arr, i, r);
     return i;
 }
 
