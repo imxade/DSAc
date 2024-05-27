@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <sys/resource.h>
 
 // Swap function using pointers
 void swap_ptr(int* a, int* b) {
@@ -78,11 +79,19 @@ void copyArray(int src[], int dest[], int n) {
     }
 }
 
+// Function to get memory usage in kilobytes
+long getMemoryUsage() {
+    struct rusage usage;
+    getrusage(RUSAGE_SELF, &usage);
+    return usage.ru_maxrss; // Memory usage in kilobytes
+}
+
 int main() {
     int n = 10000; // Size of the array
     int arr[n], arr_copy[n];
     clock_t start, end;
     double time_taken;
+    long mem_usage;
 
     // Seed the random number generator
     srand(time(0));
@@ -96,7 +105,8 @@ int main() {
     quickSort_ptr(arr_copy, 0, n - 1);
     end = clock();
     time_taken = ((double)(end - start)) / CLOCKS_PER_SEC;
-    printf("Quick Sort with pointer swap took %f seconds\n", time_taken);
+    mem_usage = getMemoryUsage();
+    printf("Quick Sort with pointer swap took %f seconds and used %ld KB of memory\n", time_taken, mem_usage);
 
     // Benchmark Quick Sort with array swap
     copyArray(arr, arr_copy, n);
@@ -104,7 +114,8 @@ int main() {
     quickSort_arr(arr_copy, 0, n - 1);
     end = clock();
     time_taken = ((double)(end - start)) / CLOCKS_PER_SEC;
-    printf("Quick Sort with array swap took %f seconds\n", time_taken);
+    mem_usage = getMemoryUsage();
+    printf("Quick Sort with array swap took %f seconds and used %ld KB of memory\n", time_taken, mem_usage);
 
     return 0;
 }
