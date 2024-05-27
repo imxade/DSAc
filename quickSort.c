@@ -1,9 +1,9 @@
 #include <stdio.h>
 
-void swap(int a , int b) {
-    int temp = a;
-    a = b;
-    b = temp;
+void swap(int* a , int* b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 void printArr(int arr[], int n) {
@@ -18,12 +18,12 @@ int partition(int arr[], int l, int r) {
     int i = l;
     for (int j = l; j < r; j++) {
         if (arr[j] < p) {
-            swap(arr[i], arr[j]);
+            swap(&arr[i], &arr[j]);
             i++;
         }
-        swap(arr[i], arr[p]);
-        return i;
     }
+    swap(&arr[i], &arr[r]);
+    return i;
 }
 
 void quickSort(int arr[], int l, int r) { 
