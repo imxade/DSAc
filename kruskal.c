@@ -126,3 +126,16 @@ int main() {
 
     return 0;
 }
+
+// Enter the number of vertices: 4
+// Enter the number of edges: 5
+// Enter the edges (source destination weight):
+// Edge 1: 0 1 10
+// Edge 2: 0 2 6
+// Edge 3: 0 3 5
+// Edge 4: 1 3 15
+// Edge 5: 2 3 4
+// Following are the edges in the constructed MST:
+// 2 -- 3 == 4
+// 0 -- 3 == 5
+// 0 -- 1 == 10

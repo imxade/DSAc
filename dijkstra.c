@@ -74,3 +74,13 @@ int main() {
 
     return 0;
 }
+
+// Enter the number of vertices: 5
+// Enter the adjacency matrix of the graph (use 2147483647 for infinity):
+// 0 10 2147483647 30 100
+// 10 0 50 2147483647 2147483647
+// 2147483647 50 0 20 10
+// 30 2147483647 20 0 60
+// 100 2147483647 10 60 0
+// Enter the source vertex: 0
+// 

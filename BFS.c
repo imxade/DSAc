@@ -52,3 +52,13 @@ int main() {
     bfs(graph, n, start);
     return 0;
 }
+
+
+// Enter number of vertices: 4
+// Enter adjacency matrix:
+// 0 1 1 0
+// 1 0 1 1
+// 1 1 0 1
+// 0 1 1 0
+// Enter starting vertex: 0
+// 

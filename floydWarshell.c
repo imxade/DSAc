@@ -58,3 +58,11 @@ int main() {
 
     return 0;
 }
+
+// Enter the number of vertices: 4
+// Enter the adjacency matrix of the graph (use 99999 for infinity):
+// 0 3 99999 5
+// 2 0 99999 4
+// 99999 1 0 99999
+// 99999 99999 2 0
+// 
