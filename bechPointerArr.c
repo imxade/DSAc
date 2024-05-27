@@ -3,6 +3,9 @@
 #include <time.h>
 #include <sys/resource.h>
 
+// If arrays weren't homogenous 'struct' would've been pointless?
+// Dive into Pointer vs Array
+
 // Swap function using pointers
 void swap_ptr(int* a, int* b) {
     int temp = *a;
