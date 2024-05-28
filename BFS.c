@@ -20,7 +20,7 @@ int dequeue() {
     return queue[front++];
 }
 
-void bfs(int graph[][MAX], int n, int start) {
+void bfs(int graph[MAX][MAX], int n, int start) {
     int visited[MAX] = {0};
     enqueue(start);
     visited[start] = 1;
@@ -38,27 +38,22 @@ void bfs(int graph[][MAX], int n, int start) {
 }
 
 int main() {
-    int n, start;
+    int n, e, start;
     printf("Enter number of vertices: ");
     scanf("%d", &n);
-    int graph[MAX][MAX];
-    printf("Enter adjacency matrix:\n");
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < n; j++)
-            scanf("%d", &graph[i][j]);
+    printf("Enter number of edges: ");
+    scanf("%d", &e);
+    int graph[MAX][MAX] = {0};
+    printf("Enter edges (u v) format:\n");
+    for (int i = 0; i < e; i++) {
+        int u, v;
+        scanf("%d %d", &u, &v);
+        graph[u][v] = 1;
+        graph[v][u] = 1; // for undirected graph
+    }
     printf("Enter starting vertex: ");
     scanf("%d", &start);
     printf("BFS Traversal: ");
     bfs(graph, n, start);
     return 0;
 }
-
-
-// Enter number of vertices: 4
-// Enter adjacency matrix:
-// 0 1 1 0
-// 1 0 1 1
-// 1 1 0 1
-// 0 1 1 0
-// Enter starting vertex: 0
-// 

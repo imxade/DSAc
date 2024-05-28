@@ -2,7 +2,7 @@
 
 #define MAX 100
 
-void dfs(int graph[][MAX], int n, int v, int visited[]) {
+void dfs(int graph[MAX][MAX], int n, int v, int visited[]) {
     visited[v] = 1;
     printf("%d ", v);
     for (int i = 0; i < n; i++) {
@@ -13,14 +13,19 @@ void dfs(int graph[][MAX], int n, int v, int visited[]) {
 }
 
 int main() {
-    int n, start;
+    int n, e, start;
     printf("Enter number of vertices: ");
     scanf("%d", &n);
-    int graph[MAX][MAX];
-    printf("Enter adjacency matrix:\n");
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < n; j++)
-            scanf("%d", &graph[i][j]);
+    printf("Enter number of edges: ");
+    scanf("%d", &e);
+    int graph[MAX][MAX] = {0};
+    printf("Enter edges (u v) format:\n");
+    for (int i = 0; i < e; i++) {
+        int u, v;
+        scanf("%d %d", &u, &v);
+        graph[u][v] = 1;
+        graph[v][u] = 1; // for undirected graph
+    }
     printf("Enter starting vertex: ");
     scanf("%d", &start);
     int visited[MAX] = {0};
@@ -29,12 +34,4 @@ int main() {
     printf("\n");
     return 0;
 }
-
-// Enter number of vertices: 4
-// Enter adjacency matrix:
-// 0 1 1 0
-// 1 0 1 1
-// 1 1 0 1
-// 0 1 1 0
-// Enter starting vertex: 0
-// 
+/ 
